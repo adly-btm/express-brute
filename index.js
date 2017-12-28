@@ -97,8 +97,19 @@ ExpressBrute.prototype.getMiddleware = function (options) {
 					firstRequestTime = lastValidRequestTime;
 				if (value) {
 					count = value.count;
-					lastValidRequestTime = value.lastRequest.getTime();
-					firstRequestTime = value.firstRequest.getTime();
+					if (value.lastRequest.getTime instanceof Function) {
+						lastValidRequestTime = value.lastRequest.getTime();
+					}
+					else {
+						lastValidRequestTime = value.lastRequest;
+					}
+					
+					if (value.firstRequest.getTime instanceof Function) {
+						firstRequestTime = value.firstRequest.getTime();
+					}
+					else {
+						firstRequestTime = value.firstRequest;
+					}
 
 					var delayIndex = value.count - this.options.freeRetries - 1;
 					if (delayIndex >= 0) {

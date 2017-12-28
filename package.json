@@ -1,5 +1,5 @@
 {
-  "name": "express-brute",
+  "name": "express-brute-adly",
   "version": "1.0.1",
   "description": "A brute-force protection middleware for express routes that rate limits incoming requests",
   "keywords": [
